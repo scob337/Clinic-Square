@@ -61,6 +61,7 @@
             <ul
                 className={`max-md:absolute 
                       lg:relative items-center justify-center gap-4 1/3 
+                      md:flex
                     max-md:flex-col max-md:items-start max-md:pl-2 
                     max-md:p-2
                     max-md:top-[130px] max-md:left-0 
@@ -96,8 +97,9 @@
             <div
                 className="
                         bg-[#F1F4FC]
-                        flex items-center justify-center p-1 w-[200px] gap-2 rounded-lg ring-1 ring-slate-600
+                        flex items-center justify-center p-1 w-[150px] gap-2 rounded-lg 
                         max-md:hidden
+                        shadow-md shadow-[#00000026]
                         "
 
             >
@@ -105,7 +107,7 @@
                 <input
                 type="text"
                 placeholder="Search"
-                className="border-none outline-none w-[80%]"
+                className="border-none outline-none bg-transparent w-[80%]"
                 />
             </div>
                 <div className="md:hidden cursor-pointer ">
