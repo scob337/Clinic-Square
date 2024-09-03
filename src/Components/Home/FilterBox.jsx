@@ -9,9 +9,8 @@ export default function FilterBox() {
     <div
       className={` {
             p-3
-           ${filter === "doctor" ? "  lg:h-[140px]" : "lg:h-fit"} 
+           ${filter === "doctor" ? "  lg:min-h-[140px]" : "lg:h-fit"} 
                 w-[70%]  mb-3  m-auto shadow-lg  rounded-xl overflow-hidden shadow-[#4400ff27] 
-
         `}
     >
       <div
@@ -41,7 +40,8 @@ export default function FilterBox() {
           Find by Symptoms{" "}
         </button>{" "}
       </div>{" "}
-    
+            <br/>
+            <br/>
 
       <div className="">
 

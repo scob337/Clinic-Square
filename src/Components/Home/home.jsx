@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import CalcServices from "./CalcServices";
 import CardsSec from "./CardsSec";
 import FilterBox from "./FilterBox";
 
@@ -8,6 +9,10 @@ import FilterBox from "./FilterBox";
             <Banner/>
             <FilterBox/>
             <CardsSec/>
+            <br/>
+            <br/>
+            <br/>
+            <CalcServices/>
         </div>
     )
     }

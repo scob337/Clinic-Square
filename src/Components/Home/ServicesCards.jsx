@@ -11,18 +11,18 @@
         icon: <TbTestPipe size={49} color="#00aca8" />,
         },
         {
-        id: 1,
+        id: 2,
         text: "Specialized doctors",
         icon: <FaHeartPulse size={49} />,
         active: true,
         },
         {
-        id: 1,
+        id: 3,
         text: "Online Appointment",
         icon: <FaSnapchat size={49} color="#00aca8" />,
         },
         {
-        id: 1,
+        id: 4,
         text: "Convenient Pharmacy",
         icon: <GiSyringe size={49} color="#00aca8" />,
         },

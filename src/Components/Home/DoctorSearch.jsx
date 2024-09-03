@@ -2,7 +2,7 @@ import { FaArrowDownLong } from "react-icons/fa6";
 
 export default function DoctorSearch() {
   return (
-    <div className="flex  p-2 flex-row max-md:flex-wrap gap-3">
+    <div className="flex  p-2 flex-row max-md:flex-wrap gap-3 ">
       <input
         type="text"
         placeholder="Name of Doctor"
