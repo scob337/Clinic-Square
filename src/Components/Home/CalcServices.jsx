@@ -31,7 +31,7 @@ export default function CalcServices() {
         },
     ];
   return (
-    <div className="flex flex-col flex-wrap justify-center items-center gap-5 mb-3 h-fit">
+    <div className="flex flex-col flex-wrap justify-center items-center gap-5 mb-[50px] h-fit">
 
 
     <div className="flex flex-col justify-center items-center">
