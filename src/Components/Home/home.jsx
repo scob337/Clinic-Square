@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import CardsSec from "./CardsSec";
 import FilterBox from "./FilterBox";
 
     export default function Home() {
@@ -6,6 +7,7 @@ import FilterBox from "./FilterBox";
         <div className="">
             <Banner/>
             <FilterBox/>
+            <CardsSec/>
         </div>
     )
     }
