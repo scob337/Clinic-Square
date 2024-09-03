@@ -3,7 +3,7 @@ import FilterBox from "./FilterBox";
 
     export default function Home() {
     return (
-        <div>
+        <div className="">
             <Banner/>
             <FilterBox/>
         </div>
