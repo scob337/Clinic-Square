@@ -1,3 +1,4 @@
+import MainCard from "../DoctorCard/MainCard";
 import Banner from "./Banner";
 import CalcServices from "./CalcServices";
 import CardsSec from "./CardsSec";
@@ -13,6 +14,7 @@ import FilterBox from "./FilterBox";
             <br/>
             <br/>
             <CalcServices/>
+            <MainCard/>
         </div>
     )
     }
