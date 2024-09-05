@@ -82,7 +82,7 @@
                             group
                             max-md:p-1  max-md:w-[150px]
                             ${
-                            activeItem === item.link
+                            activeItem === item.link || location.pathname===item.link
                                 ? "text-[#00ACA8]"
                                 : "text-gray-600 "
                             } 

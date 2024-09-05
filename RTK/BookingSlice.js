@@ -1,28 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // إنشاء Slice يحتوي على الحالة الأولية (initialState) والدوال التي تقوم بتعديل الحالة
 export const Booking = createSlice({
-  name: 'Booking',  // اسم الـ Slice
-  initialState: { BookingInfo: {
-    patientName: '',
-    date: '',
-    time: '',
-    Adress: '',
-  } },  
+  name: "Booking", // اسم الـ Slice
+  initialState: {
+    BookingInfo: {
+      patientName: "",
+      date: "",
+      time: "",
+      Adress: "",
+    },
+  },
   reducers: {
     AddBooking: (state, action) => {
-      state.BookingInfo=action.payload; 
+      state.BookingInfo = action.payload;
     },
     RemoveBooking: (state) => {
-        state.BookingInfo={
-            patientName: '',
-            date: '',
-            time: '',
-            Adress: '',
-        }; 
+      state.BookingInfo = {
+        patientName: "",
+        date: "",
+        time: "",
+        Adress: "",
+      };
     },
-
-  }
+  },
 });
 
 export const { AddBooking, RemoveBooking } = Booking.actions;
