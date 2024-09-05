@@ -28,9 +28,8 @@ const Doc_Modal = (props) => {
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
             padding: "0px", // إزالة الـ padding الافتراضي
-            border: "1px solid #ccc",
             background: "#fff",
-            borderRadius: "10px",
+            borderRadius: "30px",
             width: "80%",
             display: "flex",
             flexDirection: "column",
@@ -38,14 +37,14 @@ const Doc_Modal = (props) => {
           },
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.6)",
-            backdropFilter: "blur(10px)",
+            backdropFilter: "blur(7px)",
             zIndex: 9999,
           },
         }}
       >
         {/* الهيدر */}
         <div className="w-full bg-[#00ACA8] h-[60px] flex justify-between items-center p-4 text-white rounded-t-lg">
-          <div className="logo w-[100px]">
+          <div className="logo w-[200px]">
             <img src={Logo} alt="Logo" className="w-[120px] h-[60px] object-cover" />
           </div>
           <IoCloseCircleOutline size={36} onClick={() => SetShow(false)} className="cursor-pointer" />
