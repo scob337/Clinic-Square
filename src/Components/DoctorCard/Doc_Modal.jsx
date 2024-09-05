@@ -17,7 +17,6 @@ const Doc_Modal = (props) => {
     <div>
       <Modal
         isOpen={Show}
-        onRequestClose={() => SetShow(false)}
         contentLabel="Doctor Information"
         style={{
           content: {
