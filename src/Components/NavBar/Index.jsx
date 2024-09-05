@@ -11,7 +11,6 @@
         const Target = (Item) => {
             setActiveItem(Item);
         };
-
         const HandleToggle = ()=>{
             setToggle(!Toggle)
             console.log(Toggle)
@@ -25,7 +24,7 @@
             {
             id: 1,
             name: "Home",
-            link: "#",
+            link: "/",
             },
             {
             id: 2,
@@ -35,7 +34,7 @@
             {
             id: 3,
             name: "Doctors",
-            link: "#2",
+            link: "/doctors",
             },
             {
             id: 4,
