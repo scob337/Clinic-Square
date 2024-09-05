@@ -1,9 +1,10 @@
 import Modal from "react-modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Doctors_Card from "./Doctors_Card";
 import Logo from "../../assets/Clinic3-removebg-preview.png";
 import { IoCloseCircleOutline } from "react-icons/io5";
-
+import { useState } from "react";
+import {AddBooking} from '../../../RTK/BookingSlice'
 // تهيئة مكتبة المودال لربطها بالـ root
 Modal.setAppElement("#root");
 
@@ -14,8 +15,31 @@ const Doc_Modal = (props) => {
   const { name, speciality, image, rank } = useSelector(
     (state) => state.doctor.DocInfo
   );
+
+  const { patientName , adress, date, time  } = useSelector(
+    (state) => state.booking.BookingInfo
+  );
+  const dispatch = useDispatch()
+
+  const [Booking , setBooking]= useState("Booking")
+
+  const [BookingInfo, setBookingInfo] = useState({
+    patientName: "",
+    adress: "",
+    date: "",
+    time: "",
+    
+  })
+  const HandleCloseModal = ()=>{              SetShow(false)
+    setBooking("Booking")
+  }
   const HandleSubmit = (e) => {
     e.preventDefault();
+    dispatch(AddBooking(BookingInfo))
+    
+    setTimeout(() => {
+      setBooking("Submited")
+    }, 1000);
   };
   return (
     <div>
@@ -30,7 +54,7 @@ const Doc_Modal = (props) => {
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            padding: "0px", // إزالة الـ padding الافتراضي
+            padding: "10px", // إزالة الـ padding الافتراضي
             background: "#fff",
             borderRadius: "30px",
             width: "80%",
@@ -45,7 +69,6 @@ const Doc_Modal = (props) => {
           },
         }}
       >
-        {/* الهيدر */}
         <div className="w-full bg-[#00ACA8] h-[60px] flex justify-between items-center p-4 text-white rounded-t-lg">
           <div className="logo w-[200px]">
             <img
@@ -56,20 +79,19 @@ const Doc_Modal = (props) => {
           </div>
           <IoCloseCircleOutline
             size={36}
-            onClick={() => SetShow(false)}
+            onClick={() => {
+              HandleCloseModal()
+            }}
             className="cursor-pointer"
           />
         </div>
 
-        {/* المحتوى الرئيسي */}
-        <div className="flex flex-col md:flex-row w-full p-5 gap-5">
-          {/* القسم الأول: الكارد والمعلومات */}
+       <div className="flex flex-col md:flex-row w-full h-[70%] m-auto p-2 gap-0 shadow-2xl ">
           <div className="w-full md:w-1/2 p-5 flex flex-col items-center justify-center">
             <Doctors_Card Item={{ name, speciality, image, rank }} />
           </div>
-
-          {/* القسم الثاني: الفورم */}
-          <div className="w-full md:w-1/2 p-5">
+          {Booking ==="Booking" && 
+          <div className="w-full md:w-1/3 p-5">
             <h2 className="text-lg font-bold mb-4">Appointment Form</h2>
             <form className="flex flex-col gap-4" onSubmit={HandleSubmit}>
               <div className="flex justify-between items-center gap-2">
@@ -77,6 +99,7 @@ const Doc_Modal = (props) => {
                   type="text"
                   placeholder="Patient’s Name"
                   className="p-2 border rounded text-[#00ACA8] bg-[#F8F7F7]"
+                  onChange={(e)=> setBookingInfo({...BookingInfo, patientName: e.target.value})}
                 />
                 <input
                   type="email"
@@ -93,6 +116,7 @@ const Doc_Modal = (props) => {
                 type="text"
                 placeholder="Address"
                 className="p-2 border rounded text-[#00ACA8]"
+                onChange={(e)=> setBookingInfo({...BookingInfo, adress: e.target.value})}
               />
           </div>
               <div className="flex justify-between items-center w-[80%]">
@@ -104,6 +128,7 @@ const Doc_Modal = (props) => {
                     type="date"
                     id="date"
                     className="p-2 border text-[#00ACA8] bg-[#F8F7F7] rounded-lg"
+                    onChange={(e)=> setBookingInfo({...BookingInfo, date: e.target.value})}
                   />
                 </div>
                 <div className="flex flex-col justify-center ">
@@ -114,6 +139,7 @@ const Doc_Modal = (props) => {
                     type="time"
                     id="time"
                     className="p-2 border text-[#00ACA8] bg-[#F8F7F7] rounded-lg"
+                    onChange={(e)=> setBookingInfo({...BookingInfo, time: e.target.value})}
                   />
                 </div>
               </div>
@@ -135,7 +161,22 @@ const Doc_Modal = (props) => {
               </button>
             </form>
           </div>
+          }
+
+        {Booking ==="Submited" &&
+        <div className="w-full md:w-1/2 p-5 flex flex-col items-start justify-start">
+        <h1 className="text-lg font-bold mb-4 text-[#F89F1B]" >Appointment  Confirmation</h1>
+        
+        <div className="flex flex-col gap-3 w-[100% ]  p-3 rounded-lg"> 
+                  <p className="text-[#00ACA8] font-bold  "> {patientName}</p>
+                  <div className="text-[#00ACA8] flex gap-5 font-bold  "> <span>{date}</span> <span>{time}</span></div>
+                  <p className="text-[#00ACA8] font-medium"> {adress}</p>
+                  <p className="text-[#00ACA8] text-[10px]">A notification has been sent to Ph. 7893933066 and Sakshipal1310@gmail.com</p>
+                
         </div>
+        </div>}
+        </div>
+
       </Modal>
     </div>
   );

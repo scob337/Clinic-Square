@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import DoctoroctorReducer from './DoctorSlice'
+import DoctoroctorReducer from './DoctorSlice.js';
+import  Booking  from './BookingSlice.js';
 export const store = configureStore({
   reducer: {
-    doctor: DoctoroctorReducer,  // ربط الـ reducer بالـ store
+    doctor: DoctoroctorReducer, 
+    booking:Booking
   },
-});
+}); 
