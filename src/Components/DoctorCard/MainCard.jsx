@@ -45,7 +45,7 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
 MainCard.displayName = "MainCard";
 
 MainCard.propTypes = {
-  SHeight: PropTypes.number.isRequired, // تأكد من أن SHeight هو رقم ومطلوب
+  SHeight: PropTypes.number.isRequired,  
 };
 
 export default MainCard;

@@ -35,12 +35,12 @@ export default function Doctors() {
         <p className="w-[100%] text-center text-[#616161] text-[12px]">Well qualified doctors are ready to serve you</p>
       </div>
 
-      {/* عنصر يحتوي على الكروت */}
+
       <div
-        style={{ maxHeight: SHeight, overflowY: 'hidden' }} // جعل overflow hidden
+        style={{ maxHeight: SHeight, overflowY: 'hidden' }} 
         className="flex flex-wrap w-full gap-4"
       >
-        <MainCard ref={mainCardRef} /> {/* ربط الـ ref بالـ MainCard */}
+        <MainCard ref={mainCardRef} /> 
       </div>
 
       <button
