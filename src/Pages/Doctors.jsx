@@ -9,8 +9,20 @@ export default function Doctors() {
   const HandleToggleHeight = () => {
     if (expanded) {
       setSHeight(640); 
+      window.scrollTo({
+        top: 0, 
+        behavior: "smooth", 
+      });
+
     } else {
       setSHeight(SHeight + 330); 
+      setTimeout(() => {
+        window.scrollTo({
+          top: mainCardRef.current?.offsetTop + SHeight, 
+          behavior: "smooth", 
+        });
+      }, 100);
+
     }
   };
 
