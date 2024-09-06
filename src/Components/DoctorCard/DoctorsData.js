@@ -1,8 +1,6 @@
  import Doctor1 from '../../assets/doctor1-removebg-preview.png'
  import Doctor2 from '../../assets/doctor2-removebg-preview.png'
  import Doctor3 from '../../assets/doctor3-removebg-preview.png'
- import Doctor6 from '../../assets/doctor6-removebg-preview.png'
- import Doctor7 from '../../assets/doctor7-removebg-preview.png'
  
  
  const DoctorData=[

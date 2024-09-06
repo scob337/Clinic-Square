@@ -35,11 +35,12 @@ const Doc_Modal = (props) => {
   };
   const HandleSubmit = (e) => {
     e.preventDefault();
-    dispatch(AddBooking(BookingInfo));
+          dispatch(AddBooking(BookingInfo));
+          setTimeout(() => {
+            setBooking("Submited");
+          }, 1000);
 
-    setTimeout(() => {
-      setBooking("Submited");
-    }, 1000);
+
   };
   return (
     <div>
@@ -87,16 +88,17 @@ const Doc_Modal = (props) => {
         </div>
 
         <div className="flex flex-col md:flex-row w-full h-[70%] m-auto p-2 gap-0 shadow-2xl ">
-          <div className="w-full md:w-1/2 p-5 flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center w-full p-5 md:w-1/2">
             <Doctors_Card Item={{ name, speciality, image, rank }} />
           </div>
           {Booking === "Booking" && (
-            <div className="w-full md:w-1/2 p-5">
-              <h2 className="text-lg font-bold mb-4">Appointment Form</h2>
+            <div className="w-full p-5 md:w-1/2">
+              <h2 className="mb-4 text-lg font-bold">Appointment Form</h2>
               <form className="flex flex-col gap-4" onSubmit={HandleSubmit}>
-                <div className="flex justify-between items-center gap-2">
+                <div className="flex flex-col items-center justify-between gap-2 lg:flex-row">
                   <input
                     type="text"
+                    required
                     placeholder="Patient’s Name"
                     className="p-2 border rounded text-[#00ACA8] bg-[#F8F7F7]"
                     onChange={(e) =>
@@ -108,17 +110,19 @@ const Doc_Modal = (props) => {
                   />
                   <input
                     type="email"
+                    required
                     placeholder="Your Email"
                     className="p-2 border rounded text-[#00ACA8] bg-[#F8F7F7]"
                   />
                 </div>
 
                 <div className="flex flex-col justify-between ">
-                  <label htmlFor="adress" className="block text-sm mb-2">
+                  <label htmlFor="adress" className="block mb-2 text-sm">
                     Address:{" "}
                   </label>
                   <input
                     id="adress"
+                    required
                     type="text"
                     placeholder="Address"
                     className="p-2 border rounded text-[#00ACA8]"
@@ -129,11 +133,12 @@ const Doc_Modal = (props) => {
                 </div>
                 <div className="flex justify-between items-center w-[80%]">
                   <div className="flex flex-col justify-center">
-                    <label htmlFor="date" className="block text-sm mb-2">
+                    <label htmlFor="date" className="block mb-2 text-sm">
                       Date:
                     </label>
                     <input
                       type="date"
+                      required
                       id="date"
                       className="p-2 border text-[#00ACA8] bg-[#F8F7F7] rounded-lg"
                       onChange={(e) =>
@@ -142,11 +147,12 @@ const Doc_Modal = (props) => {
                     />
                   </div>
                   <div className="flex flex-col justify-center ">
-                    <label htmlFor="time" className="block text-sm  mb-2">
+                    <label htmlFor="time" className="block mb-2 text-sm">
                       Time:
                     </label>
                     <input
                       type="time"
+                      required
                       id="time"
                       className="p-2 border text-[#00ACA8] bg-[#F8F7F7] rounded-lg"
                       onChange={(e) =>
@@ -157,7 +163,8 @@ const Doc_Modal = (props) => {
                 </div>
                 <div className="flex justify-between items-center gap-2 w-[90%]">
                   <div className="flex items-center gap-3 ">
-                    <input type="checkbox" id="checkbox" />
+                    <input type="checkbox" id="checkbox"
+                    required />
                     <label htmlFor="checkbox">Payment through Wallet</label>
                   </div>
                   <span className="text-xs text-[#F8A01B]">
@@ -175,7 +182,7 @@ const Doc_Modal = (props) => {
           )}
 
           {Booking === "Submited" && (
-            <div className="w-full md:w-1/2 p-5 flex flex-col items-start justify-start">
+            <div className="flex flex-col items-start justify-start w-full p-5 md:w-1/2">
               <h1 className="text-lg font-bold mb-4 text-[#F89F1B]">
                 Appointment Confirmation
               </h1>

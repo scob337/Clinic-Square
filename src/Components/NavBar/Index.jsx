@@ -29,7 +29,7 @@
             {
             id: 2,
             name: "Services",
-            link: "#1",
+            link: "/services",
             },
             {
             id: 3,
@@ -109,7 +109,7 @@
                 className="border-none outline-none bg-transparent w-[80%]"
                 />
             </div>
-                <div className="md:hidden cursor-pointer ">
+                <div className="cursor-pointer md:hidden ">
             <FaBarsStaggered size={36} onClick={() => HandleToggle()}/>
 
                 </div>
