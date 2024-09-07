@@ -6,7 +6,7 @@
 
         export default function Index() {
         const [Toggle, setToggle] = useState(false);
-        const [activeItem, setActiveItem] = useState("#");
+        const [activeItem, setActiveItem] = useState("/");
 
         const Target = (Item) => {
             setActiveItem(Item);
@@ -54,6 +54,7 @@
                 <img
                 src={Logo}
                 alt="Logo"
+                loading="lazy"
                 className="w-[200px] h-[110px] object-cover"
                 />
             </div>
@@ -74,6 +75,7 @@
                 {Data.map((item) => (
                 <NavLink
                     onClick={() => Target(item.link)}
+                    end
                     to={item.link}
                     key={item.id}
                     className={`

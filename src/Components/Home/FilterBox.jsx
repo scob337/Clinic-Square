@@ -26,8 +26,8 @@ export default function FilterBox() {
             } `}
           onClick={() => setFilter("doctor")}
         >
-          Find a doctor{" "}
-        </button>{" "}
+          Find a doctor
+        </button>
         <button
           className={`
                         font-bold  p-3 w-[49%] h-full ${
@@ -37,9 +37,9 @@ export default function FilterBox() {
                         } `}
           onClick={() => setFilter("Symptoms")}
         >
-          Find by Symptoms{" "}
-        </button>{" "}
-      </div>{" "}
+          Find by Symptoms
+        </button>
+      </div>
             <br/>
             <br/>
 

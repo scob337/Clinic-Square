@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState } from 'react';
 
 export default function SelectFilter() {
   const [checkedItems, setCheckedItems] = useState([]);
@@ -114,7 +114,7 @@ export default function SelectFilter() {
 
     ]
 
-  
+
   return (
     <div className='flex flex-wrap gap-3 p-3'>         
     {Data.map((item) => (

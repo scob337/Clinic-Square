@@ -12,7 +12,7 @@ export default function Doctors_Card({Item , Button}) {
        before:content-[''] before:absolute before:top-9 before:left-0 before:w-[100%] before:h-[50%] before:bg-[#00ACA8] before:opacity-60  before:rounded-lg
       
       ">
-      <img src={image} alt="Doctor" className="w-[70%] h-[150px] object-cover  z-[999]
+      <img loading="lazy" src={image} alt="Doctor" className="w-[70%] h-[150px] object-cover  z-[999]
       
       " />
       <h2 className="text-center text-[14px] font-bold text-[#404040]">{name}</h2>

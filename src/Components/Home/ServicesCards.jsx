@@ -36,7 +36,7 @@
             className={`${
                 data.active && " bg-[#00ACA8] text-white"
             } flex flex-col items-center justify-center gap-5 shadow-lg shadow-[#ccc] ring-1 ring-[#f5eaea]  text-black 
-                w-[200px] h-[180px] rounded-[20px]`}
+                    w-[200px] h-[180px] rounded-[20px]`}
             >
             {data.icon}
             <p>{data.text}</p>
