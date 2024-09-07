@@ -1,5 +1,6 @@
 import { useState } from "react";
 import BMICalculator from "../../Components/CalcCards/BMI/BMI";
+import Period from "../../Components/CalcCards/Period/Period";
 
 export default function Services() {
   const [Tab, setTab] = useState("BMI");
@@ -42,6 +43,7 @@ export default function Services() {
 
       {/* عرض الـ BMICalculator فقط عند اختيار BMI */}
       {Tab === "BMI" && <BMICalculator Result={Show} HideResult={setShow}  />}
+      {Tab === "Period" && <Period />}
     </div>
   );
 }
