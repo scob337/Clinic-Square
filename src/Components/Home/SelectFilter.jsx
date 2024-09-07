@@ -121,7 +121,9 @@ export default function SelectFilter() {
       <label
         key={item.id}
         htmlFor={item.id}
-        className={`block text-sm w-fit p-2 ring-1 ring-[#00ACA8] cursor-pointer rounded-xl ${
+        className={`
+          hover:bg-[#00ACA8] hover:text-white transition
+          block text-sm w-fit p-2 ring-1 ring-[#00ACA8] cursor-pointer rounded-xl ${
           checkedItems.includes(item.id) ? 'bg-[#00ACA8] text-white' : 'bg-white text-black'
         }`}
       >
