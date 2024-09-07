@@ -25,6 +25,8 @@ const PergCalc = () => {
 
   return (
     <div className="p-4">
+
+      
       <h2 className="text-lg font-bold mb-4">Pregnancy Duration Calculator</h2>
       <label htmlFor="lmpDate" className="block text-sm mb-2">
         Last Menstrual Period (LMP) Date:
