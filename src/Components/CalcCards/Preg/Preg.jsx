@@ -1,61 +1,79 @@
-import  { useState } from "react";
-import CalcLayout from "../CalcLayout"; // صورة المرأة الحامل التي تم تحميلها
-import Pregenant from '../../../assets/Pregnant.png'
+import { useState } from "react";
+import CalcLayout from "../CalcLayout";
+import Pregenant from '../../../assets/Pregnant.png';
+
 export default function PregnancyCalculator() {
   const [lastPeriodDate, setLastPeriodDate] = useState("");
   const [result, setResult] = useState("");
+  const [weeksRemaining, setWeeksRemaining] = useState("");
+  const [daysRemaining, setDaysRemaining] = useState("");
+  const [currentWeight, setCurrentWeight] = useState("");
+  const [progress, setProgress] = useState(0);
 
   // دالة الحساب
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // تأكد من أن تاريخ آخر دورة مدخل
     if (!lastPeriodDate) {
       alert("Please fill in the last period date.");
       return;
     }
 
-    // تحويل تاريخ آخر دورة إلى كائن Date
     const start = new Date(lastPeriodDate);
-
-    // إضافة 280 يومًا (40 أسبوعًا) لحساب موعد الولادة المتوقع
     const dueDate = new Date(start);
-    dueDate.setDate(start.getDate() + 280);
+    dueDate.setDate(start.getDate() + 280); // 280 يومًا (40 أسبوعًا)
 
-    // تنسيق التاريخ بالشكل المطلوب (YYYY-MM-DD)
-    const formattedDueDate = dueDate.toISOString().split("T")[0];
+    const today = new Date();
+    const timeDifference = dueDate - today;
 
-    // وضع النتيجة في الـ state
+    const remainingDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const remainingWeeks = Math.floor(remainingDays / 7);
+    const remainingDaysInWeek = remainingDays % 7;
+
+    // حساب الوزن المتوقع للجنين بناءً على الأسابيع (متوسط الوزن بالجرامات)
+    const totalWeeks = 40;
+    const weeksElapsed = totalWeeks - remainingWeeks;
+    let weight = 0;
+
+    if (weeksElapsed <= 12) {
+      weight = 14 * weeksElapsed; // الوزن التقديري للأشهر الثلاثة الأولى
+    } else if (weeksElapsed <= 27) {
+      weight = 100 + 30 * (weeksElapsed - 12); // الأشهر الثلاثة الثانية
+    } else {
+      weight = 1000 + 200 * (weeksElapsed - 27); // الأشهر الثلاثة الأخيرة
+    }
+
+    // تنسيق تاريخ الولادة المتوقع
+    const formattedDueDate = dueDate.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long'
+    });
+
+    // حساب نسبة التقدم (progress)
+    const progressPercentage = Math.min((weeksElapsed / totalWeeks) * 100, 100);
+
     setResult(`Your expected due date is: ${formattedDueDate}`);
+    setWeeksRemaining(remainingWeeks);
+    setDaysRemaining(remainingDaysInWeek);
+    setCurrentWeight(weight.toFixed(2));
+    setProgress(progressPercentage);
   };
 
   return (
     <div className="min-h-screen w-[100%] bg-gray-50 flex flex-col items-center justify-center p-4">
-      {/* العنوان مع صورة */}
       <CalcLayout Title="Pregnancy calculator" />
-      <p className="text-center  text-[#898888]
-        text-[16px] w-[550px]  font-semibold
-        max-md:w-[300px] max-md:text-[12px]
-        ">Use our menstrual cycle calculator to calculate your next period, ovulation & due date. Enter the date of your last period, how long it lasted, the length of your average cycle and press Calculate:</p>
+      <p className="text-center text-[#898888] text-[16px] w-[550px] font-semibold max-md:w-[300px] max-md:text-[12px]">
+        Use our menstrual cycle calculator to calculate your next period, ovulation & due date. Enter the date of your last period, how long it lasted, the length of your average cycle and press Calculate:
+      </p>
       <div className="w-56 h-56 text-white rounded-full flex flex-col justify-center items-center text-center">
-        <img
-            src={Pregenant}
-        />
+        <img src={Pregenant} alt="Pregnant" />
       </div>
 
       {!result ? (
         <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-          {/* عنوان */}
-
-
-          {/* النموذج */}
           <form onSubmit={handleSubmit}>
-            {/* Last period start date */}
             <div className="mb-6">
-              <label
-                htmlFor="last-period-date"
-                className="block text-gray-700 mb-2 font-medium"
-              >
+              <label htmlFor="last-period-date" className="block text-gray-700 mb-2 font-medium">
                 Start date of last period
               </label>
               <input
@@ -66,22 +84,36 @@ export default function PregnancyCalculator() {
                 onChange={(e) => setLastPeriodDate(e.target.value)}
               />
             </div>
-
-            {/* Submit button */}
             <div className="text-center">
-              <button
-                type="submit"
-                className="bg-teal-500 text-white py-2 px-6 rounded-lg hover:bg-teal-600 transition"
-              >
+              <button type="submit" className="bg-teal-500 text-white py-2 px-6 rounded-lg hover:bg-teal-600 transition">
                 Calculate
               </button>
             </div>
           </form>
         </div>
       ) : (
-        <div className="bg-teal-500 text-white p-8 rounded-full shadow-lg max-w-sm w-full text-center mt-8">
+        <div className=" text-black p-8 rounded-full shadow-lg max-w-sm w-full text-center mt-8">
           <h2 className="text-xl font-bold">Due Date</h2>
           <p>{result}</p>
+          <p>Weeks remaining: {weeksRemaining} weeks and {daysRemaining} days</p>
+          <p>Estimated baby weight: {currentWeight} grams</p>
+
+          {/* Progress Bar */}
+          <div className="w-full bg-gray-300 rounded-full h-4 mt-4 relative overflow-hidden">
+            <div className="absolute w-1/3 h-4 bg-green-500 rounded-l-full"></div>
+            <div className="absolute w-1/3 h-4 bg-yellow-500 left-1/3"></div>
+            <div className="absolute w-1/3 h-4 bg-red-500 rounded-r-full right-0"></div>
+
+            {/* نقطة المرحلة الحالية */}
+            <div
+              className="absolute bg-red-500 h-[15px] w-[15px] rounded-full top-[0px] z-[9999]"
+              style={{ left: `${progress}%` }}
+            >
+
+            </div>
+            <div className="absolute bg-yellow-500 h-[15px] w-[30px] rounded-full left-[7px] top-[0px] z-[0]"
+            style={{ left: `${progress} - 20%` }}></div>
+          </div>
         </div>
       )}
     </div>
