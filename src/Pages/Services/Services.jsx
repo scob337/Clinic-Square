@@ -3,6 +3,7 @@ import BMICalculator from "../../Components/CalcCards/BMI/BMI";
 import Period from "../../Components/CalcCards/Period/Period";
 import Preg from "../../Components/CalcCards/Preg/Preg";
 import Calorie from "../../Components/CalcCards/Calories/Calorie";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
   const [Tab, setTab] = useState("BMI");
@@ -13,6 +14,7 @@ export default function Services() {
     setTab(newTab);
     setShow(false); // إعادة ضبط النتيجة عند تغيير التاب
   };
+  const { t } = useTranslation();
 
   return (
     <div className="w-full min-h-[70vh] ">
@@ -21,25 +23,25 @@ export default function Services() {
           className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
           onClick={() => HandleChange("BMI")}
         >
-          BMI
+          {t("BMI")}
         </button>
         <button
           className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
           onClick={() => HandleChange("Period")}
         >
-          Period
+          {t("Period")}
         </button>
         <button
           className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
           onClick={() => HandleChange("Pregnancy")}
         >
-          Pregnancy
+          {t("Pregnancy")}
         </button>
         <button
           className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
           onClick={() => HandleChange("Calorie")}
         >
-          Calories
+          {t("Calories")}
         </button>
       </div>
 

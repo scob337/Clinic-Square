@@ -8,6 +8,7 @@ import Doctors from "./Pages/doctors.jsx";
 import { Provider } from "react-redux";
 import { store } from "../RTK/store.js";
 import Services from "./Pages/Services/Services.jsx";
+import './i18n';
 const router = createBrowserRouter([
   {
     path: "/",

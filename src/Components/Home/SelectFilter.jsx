@@ -1,7 +1,9 @@
 import {useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function SelectFilter() {
   const [checkedItems, setCheckedItems] = useState([]);
+  const { t } = useTranslation();
 
   const handleCheckboxChange = (itemId) => {
     setCheckedItems((prevState) => {
@@ -134,7 +136,7 @@ export default function SelectFilter() {
           checked={checkedItems.includes(item.id)}
           onChange={() => handleCheckboxChange(item.id)}
         />
-        {item.name}
+        {t(item.name)}
       </label>
     ))}
     <div className='w-full flex justify-center items-center'>

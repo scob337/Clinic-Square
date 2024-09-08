@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { FaArrowDownLong } from "react-icons/fa6";
 
 export default function DoctorSearch() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex  p-2 flex-row max-md:flex-wrap gap-3 ">
       <input
@@ -16,19 +19,19 @@ export default function DoctorSearch() {
           className="flex justify-between items-center cursor-pointer bg-white cursor text-black"
           value="Specially"
         >
-          <FaArrowDownLong size={36} /> Specially
+          <FaArrowDownLong size={36} /> {t("Specially")}
         </option>
-        <option  className="bg-white cursor-pointer text-black" value="cardiologist">Cardiologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="dermatologist">Dermatologist</option>
+        <option  className="bg-white cursor-pointer text-black" value="cardiologist">{t("Cardiologist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="dermatologist">{t("Dermatologist")}</option>
         <option  className="bg-white cursor-pointer text-black" value="gastroenterologist">Gastroenterologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="neurologist">Neurologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="psychiatrist">Psychiatrist</option>
-        <option  className="bg-white cursor-pointer text-black" value="pulmonologist">Pulmonologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="radiologist">Radiologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="surgeon">Surgeon</option>
-        <option  className="bg-white cursor-pointer text-black" value="urologist">Urologist</option>
-        <option  className="bg-white cursor-pointer text-black" value="allergy-specialist">Allergy Specialist</option>
-        <option  className="bg-white cursor-pointer text-black" value="endocrinologist">Endocrinologist</option>
+        <option  className="bg-white cursor-pointer text-black" value="neurologist">{t("Neurologist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="psychiatrist">{t("Psychiatrist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="pulmonologist">{t("Pulmonologist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="radiologist">{t("Radiologist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="surgeon">{t("Surgeon")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="urologist">{t("Urologist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="allergy-specialist">{t("Allergy Specialist")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="endocrinologist">{t("Endocrinologist")}</option>
       </select>
 
       <select className="p-2 w-[24%] bg-[#a8a8a8] text-white rounded-lg  max-md:w-[48%]">
@@ -36,23 +39,23 @@ export default function DoctorSearch() {
           className="flex justify-between items-center cursor-pointer bg-white cursor text-black"
           value="Specially"
         >
-          <FaArrowDownLong size={36} /> City
+          <FaArrowDownLong size={36} /> {t("City")}
         </option>
-        <option  className="bg-white cursor-pointer text-black" value="cardiologist">Giza</option>
-        <option  className="bg-white cursor-pointer text-black" value="dermatologist">Cairo</option>
-        <option  className="bg-white cursor-pointer text-black" value="gastroenterologist">Alex</option>
-        <option  className="bg-white cursor-pointer text-black" value="neurologist">Giza</option>
-        <option  className="bg-white cursor-pointer text-black" value="psychiatrist">Cairo</option>
-        <option  className="bg-white cursor-pointer text-black" value="pulmonologist">Alex</option>
-        <option  className="bg-white cursor-pointer text-black" value="radiologist">Giza</option>
-        <option  className="bg-white cursor-pointer text-black" value="surgeon">Cairo</option>
-        <option  className="bg-white cursor-pointer text-black" value="urologist">Alex</option>
-        <option  className="bg-white cursor-pointer text-black" value="allergy-specialist">Giza</option>
-        <option  className="bg-white cursor-pointer text-black" value="endocrinologist">Cairo</option>
+        <option  className="bg-white cursor-pointer text-black" value="cardiologist">{t("Giza")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="dermatologist">{t("Cairo")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="gastroenterologist">{t("Alex")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="neurologist">{t("Giza")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="psychiatrist">{t("Cairo")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="pulmonologist">{t("Alex")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="radiologist">{t("Giza")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="surgeon">{t("Cairo")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="urologist">{t("Alex")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="allergy-specialist">{t("Giza")}</option>
+        <option  className="bg-white cursor-pointer text-black" value="endocrinologist">{t("Cairo")}</option>
 
       </select>
 
-        <button className="p-2 w-[24%] bg-[#F8A01B] text-white rounded-lg max-md:w-[48%]">Search</button>
+        <button className="p-2 w-[24%] bg-[#F8A01B] text-white rounded-lg max-md:w-[48%]">{t("Search")}</button>
     </div>
   );
 }

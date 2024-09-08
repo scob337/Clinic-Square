@@ -1,9 +1,11 @@
 import { useState } from "react";
 import DoctorSearch from "./DoctorSearch";
 import SelectFilter from "./SelectFilter";
+import { useTranslation } from "react-i18next";
 
 export default function FilterBox() {
   const [filter, setFilter] = useState("doctor");
+  const { t } = useTranslation();
 
   return (
     <div
@@ -26,7 +28,7 @@ export default function FilterBox() {
             } `}
           onClick={() => setFilter("doctor")}
         >
-          Find a doctor
+          {t("Find a doctor")}
         </button>
         <button
           className={`
@@ -37,31 +39,15 @@ export default function FilterBox() {
                         } `}
           onClick={() => setFilter("Symptoms")}
         >
-          Find by Symptoms
+          {t("Find by Symptoms")}
         </button>
       </div>
-            <br/>
-            <br/>
+      <br />
+      <br />
 
       <div className="">
-
-        {filter === "doctor" ? <DoctorSearch /> : <SelectFilter/>}
-
+        {filter === "doctor" ? <DoctorSearch /> : <SelectFilter />}
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   );
 }

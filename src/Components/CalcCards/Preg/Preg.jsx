@@ -1,8 +1,11 @@
 import { useState } from "react";
 import CalcLayout from "../CalcLayout";
 import Pregenant from '../../../assets/Pregnant.png';
+import { useTranslation } from 'react-i18next';
 
 export default function PregnancyCalculator() {
+  const { t } = useTranslation(); // الحصول على دالة الترجمة
+
   const [lastPeriodDate, setLastPeriodDate] = useState("");
   const [result, setResult] = useState("");
   const [weeksRemaining, setWeeksRemaining] = useState("");
@@ -10,12 +13,11 @@ export default function PregnancyCalculator() {
   const [currentWeight, setCurrentWeight] = useState("");
   const [progress, setProgress] = useState(0);
 
-  // دالة الحساب
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!lastPeriodDate) {
-      alert("Please fill in the last period date.");
+      alert(t("Please fill in the last period date."));
       return;
     }
 
@@ -43,16 +45,14 @@ export default function PregnancyCalculator() {
       weight = 1000 + 200 * (weeksElapsed - 27); // الأشهر الثلاثة الأخيرة
     }
 
-    // تنسيق تاريخ الولادة المتوقع
-    const formattedDueDate = dueDate.toLocaleDateString('en-GB', {
+    const formattedDueDate = dueDate.toLocaleDateString('ar-EG', {
       day: 'numeric',
       month: 'long'
     });
 
-    // حساب نسبة التقدم (progress)
     const progressPercentage = Math.min((weeksElapsed / totalWeeks) * 100, 100);
 
-    setResult(`Your expected due date is: ${formattedDueDate}`);
+    setResult(t("Your expected due date is: ") + formattedDueDate);
     setWeeksRemaining(remainingWeeks);
     setDaysRemaining(remainingDaysInWeek);
     setCurrentWeight(weight.toFixed(2));
@@ -61,12 +61,12 @@ export default function PregnancyCalculator() {
 
   return (
     <div className="min-h-screen w-[100%] bg-gray-50 flex flex-col items-center justify-center p-4">
-      <CalcLayout Title="Pregnancy calculator" />
+      <CalcLayout Title={t("Pregnancy calculator")} />
       <p className="text-center text-[#898888] text-[16px] w-[550px] font-semibold max-md:w-[300px] max-md:text-[12px]">
-        Use our menstrual cycle calculator to calculate your next period, ovulation & due date. Enter the date of your last period, how long it lasted, the length of your average cycle and press Calculate:
+        {t("Use our menstrual cycle calculator to calculate your next period, ovulation & due date. Enter the date of your last period, how long it lasted, the length of your average cycle and press Calculate:")}
       </p>
       <div className="w-56 h-56 text-white rounded-full flex flex-col justify-center items-center text-center">
-        <img src={Pregenant} alt="Pregnant" />
+        <img src={Pregenant} alt={t("Pregnant")} />
       </div>
 
       {!result ? (
@@ -74,7 +74,7 @@ export default function PregnancyCalculator() {
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label htmlFor="last-period-date" className="block text-gray-700 mb-2 font-medium">
-                Start date of last period
+                {t("Start date of last period")}
               </label>
               <input
                 type="date"
@@ -86,17 +86,17 @@ export default function PregnancyCalculator() {
             </div>
             <div className="text-center">
               <button type="submit" className="bg-teal-500 text-white py-2 px-6 rounded-lg hover:bg-teal-600 transition">
-                Calculate
+                {t("Calculate")}
               </button>
             </div>
           </form>
         </div>
       ) : (
         <div className=" text-black p-8 rounded-full shadow-lg max-w-sm w-full text-center mt-8">
-          <h2 className="text-xl font-bold">Due Date</h2>
+          <h2 className="text-xl font-bold">{t("Due Date")}</h2>
           <p>{result}</p>
-          <p>Weeks remaining: {weeksRemaining} weeks and {daysRemaining} days</p>
-          <p>Estimated baby weight: {currentWeight} grams</p>
+          <p>{t("Weeks remaining")}: {weeksRemaining} {t("weeks")} {t("and")} {daysRemaining} {t("days")}</p>
+          <p>{t("Estimated baby weight")}: {currentWeight} {t("grams")}</p>
 
           {/* Progress Bar */}
           <div className="w-full bg-gray-300 rounded-full h-4 mt-4 relative overflow-hidden">
@@ -109,10 +109,9 @@ export default function PregnancyCalculator() {
               className="absolute bg-red-500 h-[15px] w-[15px] rounded-full top-[0px] z-[9999]"
               style={{ left: `${progress}%` }}
             >
-
             </div>
             <div className="absolute bg-yellow-500 h-[15px] w-[30px] rounded-full left-[7px] top-[0px] z-[0]"
-            style={{ left: `${progress} - 20%` }}></div>
+            style={{ left: `${progress - 20}%` }}></div>
           </div>
         </div>
       )}

@@ -3,13 +3,14 @@ import Logo from "../../assets/Clinic3-removebg-preview.png";
 import { CiSearch } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { FaBarsStaggered } from "react-icons/fa6";
-
+import { useTranslation } from "react-i18next";
 export default function Index() {
     const [Toggle, setToggle] = useState(false);
     const [activeItem, setActiveItem] = useState("");
     
     // استخدم useLocation لتتبع مسار الصفحة الحالي
     const location = useLocation();
+    const  { t } = useTranslation();
 
     useEffect(() => {
         setActiveItem(location.pathname); // يحدث عند تغيير المسار
@@ -73,7 +74,7 @@ export default function Index() {
                             }
                         `}
                     >
-                        <li>{item.name}</li>
+                        <li>{t(item.name)}</li>
                     </NavLink>
                 ))}
             </ul>
@@ -86,7 +87,7 @@ export default function Index() {
                 <CiSearch size={24} color="#00ACA8" cursor={"pointer"} />
                 <input
                     type="text"
-                    placeholder="Search"
+                    placeholder={t("Search...")}
                     className="border-none outline-none bg-transparent w-[80%]"
                 />
             </div>

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 // BMIResult.jsx
 export default function BMIResult({ BMI, Message, Weight, Height }) {
   // حساب النسبة المئوية بناءً على الوزن
@@ -6,6 +8,7 @@ export default function BMIResult({ BMI, Message, Weight, Height }) {
 
   // تحويل النسبة المئوية إلى درجات في الدائرة
   const strokeDashoffset = ((50 - percentage) / 100) * 565.48; // 565.48 هي محيط الدائرة
+  const { t } = useTranslation();
 
   return (
     <div className="relative flex  flex-col gap-4 justify-center   items-center w-[400px] h-fit p-3">
@@ -52,21 +55,21 @@ export default function BMIResult({ BMI, Message, Weight, Height }) {
         </svg>
       </div>
       <h3 className="font-bold  text-[22px] w-full text-center">
-        You have <span className="text-[#00ACA8] ">{Message}</span> body!
+        {t("You have")} <span className="text-[#00ACA8] ">{Message}</span> {t("body")}!
       </h3>
 
       <div className="flex flex-col justify-between  gap-2 bg-white shadow-md shadow-[#00000040]  w-[300px] min-h-[250px] h-fit p-3  rounded-lg ">
         <p className="flex justify-between items-center p-1  text-[#00000080]">
-          Less than 18.5 <span className="font-bold text-[#000]">Underweight</span>{" "}
+          {t("Less than")} 18.5 <span className="font-bold text-[#000]">{t("Underweight")}</span>{" "}
         </p>
         <p className="flex justify-between items-center p-1  text-[#00000080]">
-          18.5 to 24.9 <span className="font-bold text-[#000]">Healthy</span>{" "}
+          18.5 {t("to")} 24.9 <span className="font-bold text-[#000]">{t("Healthy")}</span>{" "}
         </p>
         <p className="flex justify-between items-center p-1  text-[#00000080]">
-          25 to 29.9 <span className="font-bold text-[#000]">Overweight</span>
+          25 {t("to")} 29.9 <span className="font-bold text-[#000]">{t("Overweight")}</span>
         </p>
         <p className="flex justify-between items-center p-1  text-[#00000080]">
-          30 or above <span className="font-bold text-[#000]">Obese</span>
+          30 {t("or above")} <span className="font-bold text-[#000]">{t("Obese")}</span>
         </p>
       </div>
     </div>

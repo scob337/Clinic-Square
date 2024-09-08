@@ -1,24 +1,26 @@
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types"; // استيراد PropTypes للتحقق من صحة props
+import PropTypes from "prop-types"; 
 import Doc_Modal from "./Doc_Modal";
 import Doctors_Card from "./Doctors_Card";
 import DocData from "./DoctorsData";
 import { AddDoc } from "../../../RTK/DoctorSlice";
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 const MainCard = forwardRef(({ SHeight }, ref) => {
   const dispatch = useDispatch();
   const [Show, setShow] = useState(false);
+  const { t } = useTranslation();
 
-  const HandleBooking = (item) => {
+  const HandleBooking = useCallback((item) => {
     dispatch(AddDoc(item));
     setShow(true);
-  };
+  }, [dispatch]);
 
   return (
     <div
       ref={ref}
-      className={`flex flex-wrap items-center justify-center w-full gap-4 p-4 m-auto max-h-[${SHeight}] overflow-hidden`}
+      className="flex flex-wrap items-center justify-center w-full gap-4 p-4 m-auto overflow-hidden"
       style={{ maxHeight: SHeight }}
     >
       {DocData.map((item) => (
@@ -30,7 +32,7 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
               className="ring-1 ring-[#00ACA8] p-2 w-[70%] rounded-2xl text-[13px] text-[#00ACA8] font-semibold transition duration-200 hover:bg-[#00ACA8] hover:text-white"
               onClick={() => HandleBooking(item)}
             >
-              Book an Appointment
+              {t("Book an Appointment")} {/* ترجمة النص */}
             </button>
           }
         />
@@ -45,7 +47,10 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
 MainCard.displayName = "MainCard";
 
 MainCard.propTypes = {
-  SHeight: PropTypes.number.isRequired,  
+  SHeight: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,  
 };
 
 export default MainCard;
