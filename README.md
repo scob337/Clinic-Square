@@ -1,7 +1,7 @@
 # **Clinic Square**  
 _A Modern Platform for Booking and Managing Medical Appointments_
 
-![Clinic Square Banner](https://i.ibb.co/3c9TMg0/1.png) <!-- يمكنك إضافة صورة توضح التطبيق هنا -->
+![Clinic Square Banner](https://github.com/scob337/clinic-square/blob/main/1.png) <!-- يمكنك إضافة صورة توضح التطبيق هنا -->
 
 ## **Live Demo**  
 🔗 [Click Here to Explore Clinic Square](clinic-square.netlify.app)
