@@ -3,6 +3,7 @@ import CalcLayout from "../CalcLayout";
 import IncreaseCard from "../IncreaseCard";
 import BMIResult from "./Result";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 export default function BMICalculator({ HideResult, Result }) {
   const { t } = useTranslation();
@@ -37,6 +38,11 @@ export default function BMICalculator({ HideResult, Result }) {
 
   return (
     <CalcLayout Title={t("BMI Calculator")}>
+      <Helmet>
+        <title>Clinic-Square || BMI-Calc </title>
+        <meta name="description" content="وصف مخصص لصفحة معينة" />
+        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
+      </Helmet>
       <div className="w-[90%] max-sm:w-[70%] max-w-[400px] m-auto p-5 rounded-md  flex flex-col">
         {ShowResult && bmi ? (
           <BMIResult

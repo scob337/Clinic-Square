@@ -1,21 +1,25 @@
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 import Doc_Modal from "./Doc_Modal";
 import Doctors_Card from "./Doctors_Card";
 import DocData from "./DoctorsData";
 import { AddDoc } from "../../../RTK/DoctorSlice";
 import { useState, forwardRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 const MainCard = forwardRef(({ SHeight }, ref) => {
   const dispatch = useDispatch();
   const [Show, setShow] = useState(false);
   const { t } = useTranslation();
 
-  const HandleBooking = useCallback((item) => {
-    dispatch(AddDoc(item));
-    setShow(true);
-  }, [dispatch]);
+  const HandleBooking = useCallback(
+    (item) => {
+      dispatch(AddDoc(item));
+      setShow(true);
+    },
+    [dispatch]
+  );
 
   return (
     <div
@@ -23,6 +27,11 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
       className="flex flex-wrap items-center justify-center w-full gap-4 p-4 m-auto overflow-hidden"
       style={{ maxHeight: SHeight }}
     >
+      <Helmet>
+        <title>Clinic-Square || Doctors </title>
+        <meta name="description" content="وصف مخصص لصفحة معينة" />
+        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
+      </Helmet>
       {DocData.map((item) => (
         <Doctors_Card
           key={item.id}
@@ -47,10 +56,7 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
 MainCard.displayName = "MainCard";
 
 MainCard.propTypes = {
-  SHeight: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,  
+  SHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default MainCard;

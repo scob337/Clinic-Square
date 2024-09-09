@@ -23,10 +23,10 @@ export default function DoctorSearch() {
         </option>
         <option  className="bg-white cursor-pointer text-black" value="cardiologist">{t("Cardiologist")}</option>
         <option  className="bg-white cursor-pointer text-black" value="dermatologist">{t("Dermatologist")}</option>
-        <option  className="bg-white cursor-pointer text-black" value="gastroenterologist">Gastroenterologist</option>
+        <option  className="bg-white cursor-pointer text-black" value="gastroenterologist">{t("Gastroenterologist")}</option>
         <option  className="bg-white cursor-pointer text-black" value="neurologist">{t("Neurologist")}</option>
         <option  className="bg-white cursor-pointer text-black" value="psychiatrist">{t("Psychiatrist")}</option>
-        <option  className="bg-white cursor-pointer text-black" value="pulmonologist">{t("Pulmonologist")}</option>
+
         <option  className="bg-white cursor-pointer text-black" value="radiologist">{t("Radiologist")}</option>
         <option  className="bg-white cursor-pointer text-black" value="surgeon">{t("Surgeon")}</option>
         <option  className="bg-white cursor-pointer text-black" value="urologist">{t("Urologist")}</option>

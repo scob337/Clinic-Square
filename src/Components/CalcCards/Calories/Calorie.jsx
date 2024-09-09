@@ -3,6 +3,7 @@ import CalcLayout from "../CalcLayout";
 import IncreaseCard from "../IncreaseCard";
 import CalResult from "./CalResult";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 export default function Calorie() {
   const { t } = useTranslation();
@@ -26,6 +27,11 @@ export default function Calorie() {
 
   return (
     <CalcLayout Title={t("Calorie Calculator")}>
+                  <Helmet>
+        <title>Clinic-Square || Calories-Calc </title>
+        <meta name="description" content="وصف مخصص لصفحة معينة" />
+        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
+      </Helmet>
       <div className="flex flex-col">
         <div className="flex gap-5">
           {/* بطاقة الوزن */}
@@ -69,7 +75,7 @@ export default function Calorie() {
           </div>
         </div>
 
-        <div className="w-[60%] max-sm:w-[70%] mt-10 bg-[#D9D9D980] max-w-[400px] h-[150px] m-auto p-5 rounded-md flex flex-col gap-3 relative text-center">
+        <div className="w-[60%] max-sm:w-[70%] mt-10 bg-[#D9D9D980] max-w-[400px] h-fit min-h-[150px] m-auto p-5 rounded-md flex flex-col gap-3 relative text-center">
           <h1 className=" font-bold text-[36px]">{t("Height")}</h1>
           <h1 className="text-[#00ACA8]">
             <span className="font-bold text-[36px] text-[#00ACA8]">{height}</span> {t("cm")}

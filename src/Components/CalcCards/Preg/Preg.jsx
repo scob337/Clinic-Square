@@ -2,6 +2,7 @@ import { useState } from "react";
 import CalcLayout from "../CalcLayout";
 import Pregenant from "../../../assets/Pregnant.png";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 // دالة لتحديد حجم الجنين بناءً على عدد الأسابيع
 
@@ -71,6 +72,11 @@ export default function PregnancyCalculator() {
   };
   return (
     <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center justify-center p-4">
+            <Helmet>
+        <title>Clinic-Square || Pregnancy-Calc </title>
+        <meta name="description" content="وصف مخصص لصفحة معينة" />
+        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
+      </Helmet>
       <CalcLayout Title={t("Pregnancy calculator")} />
       <p className="text-center text-[#898888] text-lg w-[550px] font-semibold max-md:w-[300px] max-md:text-sm">
         {t(

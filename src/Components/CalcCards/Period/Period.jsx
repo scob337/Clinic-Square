@@ -3,6 +3,7 @@ import PeriodResult from "./Result";
 import CalcLayout from "../CalcLayout";
 import Female from '../../../assets/female.png';
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 export default function Period() {
   const [periodLength, setPeriodLength] = useState("");
@@ -37,6 +38,11 @@ export default function Period() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-5 mb-5">
+                 <Helmet>
+        <title>Clinic-Square || Period-Calc </title>
+        <meta name="description" content="وصف مخصص لصفحة معينة" />
+        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
+      </Helmet>
       <CalcLayout Title={t("Period")} />
       <p className="text-center text-[#898888] text-[16px] w-[550px] font-semibold max-md:w-[300px] max-md:text-[12px]">
         {t("Use our menstrual cycle calculator to calculate your next period, ovulation & due date. Enter the date of your last period, how long it lasted, the length of your average cycle and press Calculate:")}

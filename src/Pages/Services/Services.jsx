@@ -8,11 +8,13 @@ import { useTranslation } from "react-i18next";
 export default function Services() {
   const [Tab, setTab] = useState("BMI");
   const [Show, setShow] = useState(false);
+  const [Active, setActive] = useState("BMI");
 
   // هذه الدالة تستخدم لإخفاء النتيجة في BMICalculator عند تغيير الـ Tab
   const HandleChange = (newTab) => {
     setTab(newTab);
     setShow(false); // إعادة ضبط النتيجة عند تغيير التاب
+    setActive(newTab)
   };
   const { t } = useTranslation();
 
@@ -20,25 +22,25 @@ export default function Services() {
     <div className="w-full min-h-[70vh] ">
       <div className="flex justify-center w-full gap-3">
         <button
-          className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
+          className={`min-w-[100px] ring-1 ring-[#00ACA8] text-[#00aca8] rounded-lg p-2 font-semibold w-fit hover:bg-[#00aca8] hover:text-white transition ${Active ==="BMI" ? " bg-[#00ACA8]   text-white":""}`}
           onClick={() => HandleChange("BMI")}
         >
           {t("BMI")}
         </button>
         <button
-          className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
+         className={`min-w-[100px] ring-1 ring-[#00ACA8] text-[#00aca8] rounded-lg p-2 font-semibold w-fit hover:bg-[#00aca8] hover:text-white transition ${Active ==="Period" ? " bg-[#00ACA8]   text-white":""}`}
           onClick={() => HandleChange("Period")}
         >
           {t("Period")}
         </button>
         <button
-          className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
+          className={`min-w-[100px] ring-1 ring-[#00ACA8] text-[#00aca8] rounded-lg p-2 font-semibold w-fit hover:bg-[#00aca8] hover:text-white transition ${Active ==="Pregnancy" ? " bg-[#00ACA8]   text-white":""}`}
           onClick={() => HandleChange("Pregnancy")}
         >
           {t("Pregnancy")}
         </button>
         <button
-          className="w-[100px] bg-gray-300 rounded-lg p-2 font-semibold"
+          className={`min-w-[100px] ring-1 ring-[#00ACA8] text-[#00aca8] rounded-lg p-2 font-semibold w-fit hover:bg-[#00aca8] hover:text-white transition ${Active ==="Calorie" ? " bg-[#00ACA8]   text-white":""}`}
           onClick={() => HandleChange("Calorie")}
         >
           {t("Calories")}
