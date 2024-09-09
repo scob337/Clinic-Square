@@ -120,5 +120,12 @@
   "A notification has been sent to the provided contact details.": "A notification has been sent to the provided contact details.",
   "Orthopedic": "Orthopedic",
   "Cardiologist": "Cardiologist",
-  "Gynologist": "Gynologist"
+  "Gynologist": "Gynologist",
+  "You have Normal weight body!":"You have Normal weight body!",
+  "You have Underweight body!":"You have Underweight body!",
+  "You have Overweight body!":"You have Overweight body!",
+  "You have Obese body!":"You have Obese body!",
+  "You have":"You have",
+  "Normal weight":"Normal weight",
+  "Obesity":"Obesity"
 }

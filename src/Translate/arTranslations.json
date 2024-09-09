@@ -11,7 +11,6 @@
   "Find by Symptoms": "البحث حسب الأعراض",
   "Name Of Doctor": "اسم الطبيب",
   "Specialty": "التخصص",
-
   "Dermatologist": "طبيب جلدية",
   "Gastroenterologist": "طبيب جهاز هضمي",
   "Neurologist": "طبيب أعصاب",
@@ -140,5 +139,9 @@
   "Dr. Shane Draw": "الدكتور شين دراو",
   "Dr. Sarah Louis": "الدكتورة سارة لويس",
   "Pregnancy":"حمل",
-  "Calories":"سعرات حرارية"
+  "Calories":"سعرات حرارية",
+  "You have":"لديك",
+  "body":"جسم" ,
+  "Normal weight":"طبيعي"
+
 }

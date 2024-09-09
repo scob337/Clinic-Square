@@ -41,7 +41,7 @@ export default function BMICalculator({ HideResult, Result }) {
         {ShowResult && bmi ? (
           <BMIResult
             BMI={bmi}
-            Message={message}
+            Message={t(message)}
             Weight={weight}
             Height={height}
           />
