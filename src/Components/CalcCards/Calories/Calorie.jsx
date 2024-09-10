@@ -4,6 +4,7 @@ import IncreaseCard from "../IncreaseCard";
 import CalResult from "./CalResult";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import Loading from "../Loading";
 
 export default function Calorie() {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ export default function Calorie() {
   const [height, setHeight] = useState(170); // الطول الافتراضي
   const [gender, setGender] = useState("male"); // الجنس الافتراضي
   const [calories, setCalories] = useState(0);
-
+  const [loading , setloading] = useState (false)
   // دالة حساب السعرات الحرارية باستخدام معادلة Mifflin-St Jeor
   const calculateCalories = () => {
     const heightInCm = height;
@@ -22,18 +23,22 @@ export default function Calorie() {
     } else {
       BMR = 10 * weight + 6.25 * heightInCm - 5 * age - 161;
     }
+    setloading(true)
+    setTimeout(() => {
     setCalories(BMR);
+    setloading(false)
+    }, 3000);
   };
 
   return (
     <CalcLayout Title={t("Calorie Calculator")}>
-                  <Helmet>
+      <Helmet>
         <title>Clinic-Square || Calories-Calc </title>
         <meta name="description" content="وصف مخصص لصفحة معينة" />
         <meta name="keywords" content="كلمات, مفتاحية, هنا" />
       </Helmet>
-      <div className="flex flex-col">
-        <div className="flex gap-5">
+      <div className="flex flex-col flex-wrap items-center" >
+        <div className="flex gap-5 flex-wrap justify-center">
           {/* بطاقة الوزن */}
           <IncreaseCard
             Title={t("Weight")} // ترجمة النص
@@ -62,6 +67,7 @@ export default function Calorie() {
             >
               {t("Male")}
             </button>
+
             <button
               onClick={() => setGender("female")}
               className={`py-2 px-4 rounded-lg w-full text-center ring-1 ring-[#00ACA8] text-[#00ACA8] hover:bg-[#00ACA8] hover:text-white transition ${
@@ -78,7 +84,10 @@ export default function Calorie() {
         <div className="w-[60%] max-sm:w-[70%] mt-10 bg-[#D9D9D980] max-w-[400px] h-fit min-h-[150px] m-auto p-5 rounded-md flex flex-col gap-3 relative text-center">
           <h1 className=" font-bold text-[36px]">{t("Height")}</h1>
           <h1 className="text-[#00ACA8]">
-            <span className="font-bold text-[36px] text-[#00ACA8]">{height}</span> {t("cm")}
+            <span className="font-bold text-[36px] text-[#00ACA8]">
+              {height}
+            </span>{" "}
+            {t("cm")}
           </h1>
 
           <input
@@ -100,6 +109,7 @@ export default function Calorie() {
         </button>
 
         <div className="m-4">
+          {loading && <Loading/>}
           {calories > 0 && <CalResult Cal={calories} />}
         </div>
       </div>

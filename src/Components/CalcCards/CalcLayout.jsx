@@ -5,7 +5,7 @@ export default function CalcLayout({ Title, children }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col w-full max-sm:w-[80%] h-fit m-auto">
+    <div className="flex flex-col w-full max-sm:w-[80%] h-fit m-auto mt-4">
       <div className="w-full h-[200px] flex justify-center items-center">
         <div className="relative w-[350px] max-md:w-[120px]">
           <div className="absolute bg-[#F8A01B] left-[-100px] top-[-50px] rounded-full w-[20px] h-[20px]"></div>

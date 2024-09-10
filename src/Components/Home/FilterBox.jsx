@@ -11,7 +11,7 @@ export default function FilterBox() {
     <div
       className={` {
             p-3
-           ${filter === "doctor" ? "  lg:min-h-[140px]" : "lg:h-fit"} 
+          ${filter === "doctor" ? "  lg:min-h-[140px]" : "lg:h-fit"} 
                 w-[70%]  mb-3  m-auto shadow-lg  rounded-xl overflow-hidden shadow-[#4400ff27] 
         `}
     >
@@ -20,11 +20,10 @@ export default function FilterBox() {
             shadow - lg "
       >
         <button
-          className={`
-            font-bold  p-3 w-[49%] h-full ${
-              filter === "doctor"
-                ? "  bg-[#00ACA8] text-white"
-                : "bg-transparent text-[#00ACA8]"
+          className={`max-md:text-[13px]
+            font-bold  p-3 w-[49%] h-full ${filter === "doctor"
+              ? "  bg-[#00ACA8] text-white"
+              : "bg-transparent text-[#00ACA8]"
             } `}
           onClick={() => setFilter("doctor")}
         >
@@ -32,11 +31,10 @@ export default function FilterBox() {
         </button>
         <button
           className={`
-                        font-bold  p-3 w-[49%] h-full ${
-                          filter === "Symptoms"
-                            ? "  bg-[#00ACA8] text-white"
-                            : "bg-transparent text-[#00ACA8]"
-                        } `}
+                        max-md:text-[13px] font-bold  p-3 w-[49%] h-full ${filter === "Symptoms"
+              ? "  bg-[#00ACA8] text-white"
+              : "bg-transparent text-[#00ACA8]"
+            } `}
           onClick={() => setFilter("Symptoms")}
         >
           {t("Find by Symptoms")}

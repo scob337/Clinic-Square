@@ -4,6 +4,7 @@ import IncreaseCard from "../IncreaseCard";
 import BMIResult from "./Result";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import Loading from "../Loading";
 
 export default function BMICalculator({ HideResult, Result }) {
   const { t } = useTranslation();
@@ -12,29 +13,37 @@ export default function BMICalculator({ HideResult, Result }) {
   const [bmi, setBmi] = useState(33.3);
   const [message, setMessage] = useState("");
   const [ShowResult, setShowResult] = useState(Result);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     setShowResult(Result);
   }, [Result]);
 
   const calculateBMI = () => {
+    setloading(true);
     if (weight && height) {
       const heightInMeters = height / 100;
       const bmiValue = (weight / (heightInMeters * heightInMeters)).toFixed(1);
-      setBmi(bmiValue);
-
-      if (bmiValue < 18.5) {
-        setMessage(t("Underweight")); // ترجمة الحالة
-      } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
-        setMessage(t("Normal weight")); // ترجمة الحالة
-      } else if (bmiValue >= 25 && bmiValue < 29.9) {
-        setMessage(t("Overweight")); // ترجمة الحالة
-      } else {
-        setMessage(t("Obesity")); // ترجمة الحالة
-      }
-      HideResult(true);
+  
+      setTimeout(() => {
+        setBmi(bmiValue);
+  
+        if (bmiValue < 18.5) {
+          setMessage(t("Underweight")); // ترجمة الحالة
+        } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
+          setMessage(t("Normal weight")); // ترجمة الحالة
+        } else if (bmiValue >= 25 && bmiValue < 29.9) {
+          setMessage(t("Overweight")); // ترجمة الحالة
+        } else {
+          setMessage(t("Obesity")); // ترجمة الحالة
+        }
+  
+        HideResult(true);
+        setloading(false); // تحريك setloading إلى هنا لضمان أنه ينفذ بعد انتهاء العمليات
+      }, 3000);
     }
   };
+  
 
   return (
     <CalcLayout Title={t("BMI Calculator")}>
@@ -43,7 +52,8 @@ export default function BMICalculator({ HideResult, Result }) {
         <meta name="description" content="وصف مخصص لصفحة معينة" />
         <meta name="keywords" content="كلمات, مفتاحية, هنا" />
       </Helmet>
-      <div className="w-[90%] max-sm:w-[70%] max-w-[400px] m-auto p-5 rounded-md  flex flex-col">
+      <br/>
+      <div className="w-[90%] max-sm:w-[70%] max-w-[400px] m-auto p-5 rounded-md  flex flex-col items-center">
         {ShowResult && bmi ? (
           <BMIResult
             BMI={bmi}
@@ -78,6 +88,9 @@ export default function BMICalculator({ HideResult, Result }) {
             </button>
           </div>
         )}
+      <br/>
+
+        {loading && <Loading/>}
       </div>
     </CalcLayout>
   );

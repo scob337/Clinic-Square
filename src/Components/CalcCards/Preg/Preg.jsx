@@ -3,7 +3,7 @@ import CalcLayout from "../CalcLayout";
 import Pregenant from "../../../assets/Pregnant.png";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
-
+import Loading from '../Loading'
 // دالة لتحديد حجم الجنين بناءً على عدد الأسابيع
 
 export default function PregnancyCalculator() {
@@ -15,10 +15,10 @@ export default function PregnancyCalculator() {
   const [currentWeight, setCurrentWeight] = useState("");
   const [progress, setProgress] = useState(50);
   const [weeksElapsed, setWeeksElapsed] = useState(0);
-
+const [ loading , setloading]=useState(false)
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setloading(true)
     if (!lastPeriodDate) {
       alert(t("Please fill in the last period date."));
       return;
@@ -55,11 +55,14 @@ export default function PregnancyCalculator() {
 
     const progressPercentage = Math.min((weeksElapsed / totalWeeks) * 100, 100);
 
-    setResult(t("Your expected due date is: ") + formattedDueDate);
-    setWeeksRemaining(remainingWeeks);
-    setDaysRemaining(remainingDaysInWeek);
-    setCurrentWeight(weight.toFixed(2));
-    setProgress(progressPercentage);
+    setTimeout(() => {
+      setloading(false)
+      setResult(t("Your expected due date is: ") + formattedDueDate);
+      setWeeksRemaining(remainingWeeks);
+      setDaysRemaining(remainingDaysInWeek);
+      setCurrentWeight(weight.toFixed(2));
+      setProgress(progressPercentage);
+    }, 3000)
   };
   const getBabySize = (weeksElapsed, t) => {
     if (weeksElapsed <= 12) return t("Lime");
@@ -87,7 +90,6 @@ export default function PregnancyCalculator() {
       <div className="w-56 h-56 text-white rounded-full flex flex-col justify-center items-center text-center my-4">
         <img src={Pregenant} alt={t("Pregnant")} />
       </div>
-
       {!result ? (
         <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
           <form onSubmit={handleSubmit}>
@@ -138,7 +140,6 @@ export default function PregnancyCalculator() {
               {t("days to childbirth")}
             </p>
           </div>
-
           <div className="w-full bg-gray-300 rounded-full h-4 mt-4 relative overflow-hidden max-w-md mx-auto">
             <div
               className="absolute h-4 rounded-full"
@@ -172,6 +173,9 @@ export default function PregnancyCalculator() {
           </div>
         </div>
       )}
+      <br/>
+          {loading && <Loading/>}
+
     </div>
   );
 }

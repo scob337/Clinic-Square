@@ -4,18 +4,19 @@ import CalcLayout from "../CalcLayout";
 import Female from '../../../assets/female.png';
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
-
+import Loading from '../Loading'
 export default function Period() {
   const [periodLength, setPeriodLength] = useState("");
   const [cycleLength, setCycleLength] = useState("");
   const [startDate, setStartDate] = useState("");
   const [result, setResult] = useState("");
+  const [loading, setloading] = useState(false);
   const { t } = useTranslation();
 
   // دالة الحساب
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setloading(true)
     // تأكد من أن جميع القيم مدخلة
     if (!periodLength || !cycleLength || !startDate) {
       alert(t("Please fill in all fields."));
@@ -31,9 +32,11 @@ export default function Period() {
 
     // تنسيق التاريخ بالشكل المطلوب (YYYY-MM-DD)
     const formattedNextPeriod = nextPeriodDate.toISOString().split("T")[0];
-
     // وضع النتيجة في الـ state مع الترجمة
-    setResult(t("Your next period is likely to start on") + `: ${formattedNextPeriod}`);
+    setTimeout(() => {
+      setloading(false)
+      setResult(t("Your next period is likely to start on") + `: ${formattedNextPeriod}`);
+    }, 3000)
   };
 
   return (
@@ -120,8 +123,8 @@ export default function Period() {
           </form>
         </div>
       )}
-
-      {/* Result section */}
+      <br/>
+      {loading && <Loading/>}
       {result && <PeriodResult Result={result} />}
     </div>
   );

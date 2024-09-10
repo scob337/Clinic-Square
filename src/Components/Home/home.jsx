@@ -6,7 +6,7 @@ import FilterBox from "./FilterBox";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="py-10">
       <Helmet>
         <title>Clinic-Square </title>
         <meta name="description" content="وصف مخصص لصفحة معينة" />

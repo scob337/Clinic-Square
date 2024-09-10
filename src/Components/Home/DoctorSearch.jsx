@@ -9,12 +9,12 @@ export default function DoctorSearch() {
       <input
         type="text"
         placeholder="Name of Doctor"
-        className="w-[24%] h-[40px] rounded-[10px] border border-[#00ACA8] p-3
+        className="w-[24%] max-md:w-[46%] h-[40px] rounded-[10px] border border-[#00ACA8] p-3
         bg-[#a8a8a8] text-white
         placeholder:text-white
-         max-md:w-[48%]"
+        "
       />
-      <select className="p-2 w-[24%] bg-[#a8a8a8] text-white rounded-lg  max-md:w-[48%]">
+      <select className="p-2 w-[24%]  bg-[#a8a8a8] text-white rounded-lg  max-md:w-[47%]">
         <option  
           className="flex justify-between items-center cursor-pointer bg-white cursor text-black"
           value="Specially"
@@ -34,7 +34,7 @@ export default function DoctorSearch() {
         <option  className="bg-white cursor-pointer text-black" value="endocrinologist">{t("Endocrinologist")}</option>
       </select>
 
-      <select className="p-2 w-[24%] bg-[#a8a8a8] text-white rounded-lg  max-md:w-[48%]">
+      <select className="p-2 w-[24%]  bg-[#a8a8a8] text-white rounded-lg  max-md:w-[47%]">
         <option  
           className="flex justify-between items-center cursor-pointer bg-white cursor text-black"
           value="Specially"
@@ -55,7 +55,7 @@ export default function DoctorSearch() {
 
       </select>
 
-        <button className="p-2 w-[24%] bg-[#F8A01B] text-white rounded-lg max-md:w-[48%]">{t("Search")}</button>
+        <button className="p-2 w-[24%]  bg-[#F8A01B] text-white rounded-lg max-md:w-[47%]">{t("Search")}</button>
     </div>
   );
 }
