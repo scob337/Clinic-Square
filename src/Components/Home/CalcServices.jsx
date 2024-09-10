@@ -40,7 +40,7 @@ export default function CalcServices() {
         <h1 className="text-[24px] font-semibold text-[#404040]">
           {t("Calculators")}
         </h1>
-        <p className="text-[14px] text-[#B4B4B4]">
+        <p className="text-[14px] text-center text-[#B4B4B4]">
           {t("Achieve better health through tailored calculations and insights.")}
         </p>
       </div>

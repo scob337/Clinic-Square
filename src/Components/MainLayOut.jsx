@@ -9,7 +9,7 @@ export default function MainLayOut() {
   const [Direction, setDirection] = useState(
     localStorage.getItem("i18nextLng") === "ar" ? "rtl" : "ltr"
   );
-  const [Active, setActive] = useState("ar");
+  const [Active, setActive] = useState(localStorage.getItem("i18nextLng"));
   useEffect(() => {
     i18n.changeLanguage(localStorage.getItem("i18nextLng") || "en");
   }, [i18n]);

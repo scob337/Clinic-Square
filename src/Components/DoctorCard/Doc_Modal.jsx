@@ -56,6 +56,7 @@ const Doc_Modal = ({ Show, SetShow }) => {
           background: "#fff",
           borderRadius: "30px",
           width: "80%",
+          height:"70%",
           display: "flex",
           flexDirection: "column",
           gap: "20px",
@@ -67,15 +68,15 @@ const Doc_Modal = ({ Show, SetShow }) => {
         },
       }}
     >
-      <div className="w-full bg-[#00ACA8] h-[60px] flex justify-between items-center p-4 text-white rounded-t-lg">
+      <div className="w-full bg-[#00ACA8] h-[60px]  flex justify-between items-center p-4 text-white rounded-t-lg">
         <div className="logo w-[200px]">
           <img src={Logo} alt="Logo" className="w-[120px] h-[60px] object-cover" />
         </div>
         <IoCloseCircleOutline size={36} onClick={HandleCloseModal} className="cursor-pointer" />
       </div>
 
-      <div className="flex flex-col md:flex-row w-full h-[70%] m-auto p-2 gap-0 shadow-2xl">
-        <div className="flex flex-col items-center justify-center w-full p-5 md:w-1/2">
+      <div className="flex flex-col md:flex-row w-full h-[fit-content] m-auto p-2 gap-0 shadow-2xl">
+        <div className="flex flex-col items-center justify-center   w-full p-1 md:w-1/2">
           <Doctors_Card Item={{ name, speciality, image, rank }} />
         </div>
 
@@ -113,7 +114,7 @@ const Doc_Modal = ({ Show, SetShow }) => {
                 />
               </div>
 
-              <div className="flex justify-between items-center w-[80%]">
+              <div className="flex justify-between items-center w-[100%] flex-wrap gap-5">
                 <div className="flex flex-col justify-center">
                   <label htmlFor="date" className="block mb-2 text-sm">
                     {t("Date")}:
@@ -141,10 +142,10 @@ const Doc_Modal = ({ Show, SetShow }) => {
                 </div>
               </div>
 
-              <div className="flex justify-between items-center gap-2 w-[90%]">
-                <div className="flex items-center gap-3">
+              <div className="flex justify-between items-center gap-2 w-[100%] flex-wrap">
+                <div className="flex items-center gap-3 ">
                   <input type="checkbox" id="checkbox" required />
-                  <label htmlFor="checkbox">{t("Payment through Wallet")}</label>
+                  <label className="max-md:text-[14px]" htmlFor="checkbox">{t("Payment through Wallet")}</label>
                 </div>
                 <span className="text-xs text-[#F8A01B]">
                   {t("Other Payment Option")}

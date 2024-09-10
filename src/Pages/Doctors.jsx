@@ -40,7 +40,7 @@ export default function Doctors() {
   }, [SHeight]);
 
   return (
-    <div className="w-[70%] gap-9 min-h-[40vh] h-fit m-auto flex flex-col items-center mb-3 justify-center">
+    <div className="w-[70%] gap-9 min-h-[30vh] h-fit m-auto flex flex-col items-center mb-3 justify-center">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-[#404040] text-[24px] lg:text-[36px] font-semibold">
           {t("Meet Our Family")}
@@ -52,13 +52,13 @@ export default function Doctors() {
 
       <div
         style={{ maxHeight: SHeight, overflowY: 'hidden' }}
-        className="flex flex-wrap w-full gap-4"
+        className="flex flex-wrap w-full gap-2"
       >
         <MainCard ref={mainCardRef} />
       </div>
 
       <button
-        className="ring-1 ring-[#00ACA8] p-2 w-[30%] rounded-2xl text-[13px] text-[#00ACA8] font-semibold transition duration-200 hover:bg-[#00ACA8] hover:text-white mt-[20px]"
+        className="ring-1 ring-[#00ACA8] p-2 w-[30%] rounded-2xl text-[13px] text-[#00ACA8] font-semibold transition duration-200 hover:bg-[#00ACA8] hover:text-white mt-[20px] max-md:text-[12px] max-md:w-[50%]"
         onClick={HandleToggleHeight}
       >
         {expanded ? t("Show Less") : t("Show More")}

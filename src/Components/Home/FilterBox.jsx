@@ -17,11 +17,13 @@ export default function FilterBox() {
     >
       <div
         className="w-[100%] h-fit bg-white  flex items-center justify-between gap-2 ring-1 ring-[#00ACA8] rounded-t-xl>
-            shadow - lg "
+            shadow - lg 
+            flex-wrap max-md:justify-center"
       >
         <button
           className={`max-md:text-[13px]
-            font-bold  p-3 w-[49%] h-full ${filter === "doctor"
+            font-bold  p-3 w-[49%] h-full 
+            max-md:w-full ${filter === "doctor"
               ? "  bg-[#00ACA8] text-white"
               : "bg-transparent text-[#00ACA8]"
             } `}
@@ -31,7 +33,8 @@ export default function FilterBox() {
         </button>
         <button
           className={`
-                        max-md:text-[13px] font-bold  p-3 w-[49%] h-full ${filter === "Symptoms"
+                        max-md:text-[13px] font-bold  p-3 w-[49%] h-full 
+                        max-md:w-full ${filter === "Symptoms"
               ? "  bg-[#00ACA8] text-white"
               : "bg-transparent text-[#00ACA8]"
             } `}
