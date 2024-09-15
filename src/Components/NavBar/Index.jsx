@@ -29,7 +29,7 @@
             { id: 1, name: "Home", link: "/" },
             { id: 2, name: "Services", link: "/services" },
             { id: 3, name: "Doctors", link: "/doctors" },
-            { id: 4, name: "About us", link: "#3" },
+            { id: 4, name: "Activity", link: "/activity" },
             { id: 5, name: "Labs & Pharmacy", link: "#4" },
         ];
 

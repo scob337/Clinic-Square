@@ -36,6 +36,7 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
         <Doctors_Card
           key={item.id}
           Item={item}
+          Type={"Doctor"}
           Button={
             <button
               className="ring-1 ring-[#00ACA8] max-md:text-[10px] p-2 w-[70%] rounded-2xl text-[13px] text-[#00ACA8] font-semibold transition duration-200 hover:bg-[#00ACA8] hover:text-white"
@@ -46,12 +47,12 @@ const MainCard = forwardRef(({ SHeight }, ref) => {
           }
         />
       ))}
-      <div className="w-fit  ">
+      <div className="w-fit ">
         <Doc_Modal SetShow={setShow} Show={Show} />
       </div>
     </div>
   );
-});
+});  
 
 MainCard.displayName = "MainCard";
 
