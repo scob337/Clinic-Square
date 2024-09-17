@@ -12,7 +12,7 @@ export default function Calorie() {
   const [age, setAge] = useState(25); // العمر الافتراضي
   const [height, setHeight] = useState(170); // الطول الافتراضي
   const [gender, setGender] = useState("male"); // الجنس الافتراضي
-  const [calories, setCalories] = useState(0);
+  const [calories, setCalories] =useState(0);
   const [loading , setloading] = useState (false)
   // دالة حساب السعرات الحرارية باستخدام معادلة Mifflin-St Jeor
   const calculateCalories = () => {

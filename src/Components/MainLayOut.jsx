@@ -9,7 +9,7 @@ export default function MainLayOut() {
   const [Direction, setDirection] = useState(
     localStorage.getItem("i18nextLng") === "ar" ? "rtl" : "ltr"
   );
-  const [Active, setActive] = useState(localStorage.getItem("i18nextLng"));
+  const [Active, setActive] = useState(localStorage.getItem("i18nextLng")|| "en");
   useEffect(() => {
     i18n.changeLanguage(localStorage.getItem("i18nextLng") || "en");
   }, [i18n]);
@@ -21,16 +21,24 @@ export default function MainLayOut() {
   };
 
   return (
-    <div dir={Direction}>
-      <Helmet>
-        <title>Clinic-Square </title>
-        <meta name="description" content="وصف مخصص لصفحة معينة" />
-        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
-      </Helmet>
+		<div dir={Direction}>
+			<Helmet>
+				<title>Clinic-Square </title>
+				<meta name="description" content="وصف مخصص لصفحة معينة" />
+				<meta name="keywords" content="كلمات, مفتاحية, هنا" />
+			</Helmet>
 
-      <NavBar  Lang={handleLanguageChange} Active={Active}/>
-      <Outlet />
-      <Footer />
-    </div>
-  );
+			<NavBar Lang={handleLanguageChange} Active={Active} />
+			<br />
+			<br />
+			<br />
+			<br />
+			<Outlet />
+			<br />
+			<br />
+			<br />
+			<br />
+			<Footer />
+		</div>
+	);
 }

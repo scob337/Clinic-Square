@@ -1,7 +1,9 @@
 import Doctors_Card from "../../Components/DoctorCard/Doctors_Card";
 import Pic from "../../assets/doctor2-removebg-preview.png";
 import Order from "./Order";
+import { useTranslation } from "react-i18next";
 export default function Activity() {
+	const { t } = useTranslation();
 	const Item = {
 		name: "Dr. Ahmed",
 		speciality: "Dentist",
@@ -13,7 +15,7 @@ export default function Activity() {
 		<div className="w-full min-h-[100vh] lg:mt-[100px] p-4">
 			<div className="p-3 mb-3 ">
 				<h1 className="font-bold text-[18px] ">
-					Welcome , <span className="text-[#00ACA8]">Muhammed Ahmed</span>
+					{t("Welcome")} , <span className="text-[#00ACA8]">{t("Muhammed Ahmed")}</span>
 				</h1>
 			</div>
 
@@ -22,7 +24,7 @@ export default function Activity() {
 					className="font-bold text-[24px]   ml-10 
         "
 				>
-					My Appointments
+					{t("My Appointments")}
 				</h1>
 				<div className="flex flex-wrap gap-2 w-3/4">
 					<Doctors_Card
@@ -71,7 +73,7 @@ export default function Activity() {
 					/>
 				</div>
 			</div>
-			<Order/>
+			<Order />
 		</div>
 	);
 }

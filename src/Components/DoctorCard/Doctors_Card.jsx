@@ -7,9 +7,12 @@ export default function Doctors_Card({ Item, Button, Type, TimeArray = [] }) {
 
 	return (
 		<div
-			className={`w-full md:w-[300px] lg:w-[250px] h-[300px] rounded-lg flex flex-col justify-center items-center gap-2 ring-1 ring-[#00ACA8]
+			className={`w-full md:w-[300px] lg:w-[250px] h-[380px] rounded-lg flex flex-col justify-center items-center gap-3 ring-1 ring-[#00ACA8]
 
-		${Type === "Order" && " h-[350px] ring-0 shadow-lg rounded-lg w-[350px] shadow-[#ccc] drop-shadow-md"} 
+		${
+			Type === "Order" &&
+			" h-[350px] ring-0 shadow-lg rounded-lg w-[350px] shadow-[#ccc] drop-shadow-md"
+		} 
 		`}
 		>
 			<div
@@ -21,7 +24,7 @@ export default function Doctors_Card({ Item, Button, Type, TimeArray = [] }) {
 					loading="lazy"
 					src={image}
 					alt={t("Doctor image")}
-					className="w-3/4 h-[150px] object-cover z-10"
+					className="w-3/4 h-[150px] object-cover z-10 m-3"
 				/>
 				<h2
 					className={`text-center text-[14px] font-bold text-[#404040]
@@ -54,7 +57,7 @@ export default function Doctors_Card({ Item, Button, Type, TimeArray = [] }) {
 								<p> {timeEntry.date}</p>
 								<p className="text-center w-full font-[500] ">
 									{" "}
-									{timeEntry.City}
+									{t(timeEntry.City)}
 								</p>
 							</div>
 						))}

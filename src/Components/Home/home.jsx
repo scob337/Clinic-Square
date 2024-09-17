@@ -6,19 +6,58 @@ import FilterBox from "./FilterBox";
 
 export default function Home() {
   return (
-    <div className="py-10">
-      <Helmet>
-        <title>Clinic-Square </title>
-        <meta name="description" content="وصف مخصص لصفحة معينة" />
-        <meta name="keywords" content="كلمات, مفتاحية, هنا" />
-      </Helmet>
-      <Banner />
-      <FilterBox />
-      <CardsSec />
-      <br />
-      <br />
-      <br />
-      <CalcServices />
-    </div>
-  );
+		<div className="py-10">
+			<Helmet>
+				<title>Clinic-Square </title>
+				<meta name="description" content="وصف مخصص لصفحة معينة" />
+				<meta name="keywords" content="كلمات, مفتاحية, هنا" />
+			</Helmet>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<Banner />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<FilterBox />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<CardsSec />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<CalcServices />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+		</div>
+	);
 }
